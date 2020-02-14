@@ -1,25 +1,41 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,render_to_response
 from .forms import UserLoginForm,UserRegisterForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User,auth
 
 # Create your views here.
 def home(request):
     return render(request,'main.html')
 
 def register(request):
-    if request.method=='POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username= form.cleaned_data.get('username')
-            return redirect('login')
-    else:
-        form = UserRegisterForm()
-    return render(request,'reg.html',{'form':form})
+#     if request.method=='POST':
+#         username=request.POST['username']
+#         email=request.POST['email']
+#         password1=request.POST['password1']
+#         password2=request.POST['password2']
 
-def login(request):
-    return render(request,'login.html')
+#         if password1==password2:
+#             user=User.objects.create_user(username=username,email=email,password1=password1,password2=password2)
+#             user.save()
+#             print('User created')
+#             return redirect('/')
+#     # else:
+    return render(request,'register.html')
 
-@login_required
+def login_view(request):
+    return render(request, 'login.html')
+
 def home1(request):
-    return render(request,'home.html')
+    return render(request,'welcome.html')
+
+def comp(request):
+    return render(request,'comp.html')
+
+def lndf(request):
+    return render(request,'comp.html')
+
+def event(request):
+    return render(request,'comp.html')
+
+def cafe(request):
+    return render(request,'cafe.html')
+

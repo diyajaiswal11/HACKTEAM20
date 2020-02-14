@@ -1,0 +1,273 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Cafetaria</title>
+      <link rel="stylesheet" href="{% static 'all.css' %}">
+      <link rel="stylesheet" href="{% static 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+      <link href="{% static '//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+      <script src="{% static '//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js' %}"></script>    
+      <script src="{% static '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js' %}"></script>
+<!------ Include the above in your HEAD tag ---------->
+      <script src="{% static 'https://code.jquery.com/jquery-3.3.1.js' %}"></script>
+      <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' %}">
+      <link href="{% static 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+   </head>
+
+   <body>
+      <div class="wrapper">
+         <header>
+            <nav>
+               <div class="menu-icon">
+                  <i class="fa fa-bars fa-2x"></i>
+               </div>
+               <div class="logo">
+                  <p style = "font-family:georgia,garamond,serif;font-size:50px;font-style:bold;">
+                     Orders
+                  </p>
+               </div>
+               <div class="menu">
+                  <ul>
+                     <div style = "position:relative; left:30px; top:50px;">
+                     <li><a href="{% url 'home1' %}">Home</a></li>
+                     <li><a href="{% url 'lndf' %}">Lost And Found</a></li>
+                     <li><a href="{%url 'comp' %}">Complain</a></li>
+                     <li><a href="{%url 'event' %}">Events</a></li> 
+                     </div>
+                  </ul>
+               </div>
+            </nav>
+         </header>
+   <div class="content">
+            <div class="container">
+               <div class="row">
+                 <div class="col s12">
+                  <table class="table table-hover" style="margin-bottom: 20px;" >
+                     <tbody>
+                       <tr>
+                         <td>LES P'TITS PLATS</td>
+                         <td>+</td>
+                       </tr>
+                       <tr>
+                         <td>LES PLATS</td>
+                         <td>+</td>
+                       </tr>
+                       <tr>
+                         <td>THALI POUR 2 PERSONNES</td>
+                         <td>+</td>
+                       </tr>
+                       <tr>
+                         <td>LES A-COTES</td>
+                         <td>+</td>
+                       </tr>
+                       <tr>
+                         <td>BREUVAGES</td>
+                         <td>+</td>
+                       </tr>
+                       <tr>
+                         <td>DESSERTS</td>
+                         <td>+</td>
+                       </tr>
+                     </tbody>
+                   </table>
+                   <div id="main" class="card">
+                     <div class="card-content">
+                       <span class="card-title">Food list</span>
+                       <div class="row">
+                         <form id="task-form">
+                           <div class="input-field col s12">
+                             <input type="text" name="task" id="task">
+                             <label for="task">select food</label>
+                           </div>
+                           <input type="submit" value="Add Food"
+                           class="btn">
+                         </form>
+                       </div>
+                     </div>
+                     <div class="card-action">
+                       <h5 id="task-title">Order</h5>
+                       <div class="input-field col s12">
+                         <input type="text" name="
+                         filter" id="filter">
+                         <label for="filter">Filter order</label>
+                       </div>
+                       <ul class="collection"></ul>
+                       <a href="#" class="clear-tasks btn black">Clear order</a> 
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           
+         </div>
+      </div>
+      <script >// define UI vars
+         const form = document.querySelector('#task-form');
+         const taskList = document.querySelector('.collection');
+         const clearBtn = document.querySelector('.clear-tasks');
+         const filter = document.querySelector('#filter');
+         const taskInput = document.querySelector('#task');
+         
+         // load all event listeners
+         loadEventListeners();
+         
+         // load all event listeners
+         function loadEventListeners(){
+           //DOM load event
+           document.addEventListener('DOMContentLoaded' , getTasks);
+           // add task event
+           form.addEventListener('submit' , addTask);
+           // remove task event
+           taskList.addEventListener('click' , removeTask);
+           // clear task event
+           clearBtn.addEventListener('click' , clearTasks);
+           // fliter tasks event
+           filter.addEventListener('keyup' , filterTasks);
+         }
+         
+         // get tasks from LS
+         function getTasks(){
+           let tasks;
+           if(localStorage.getItem('tasks') === null){
+             tasks = [];
+           }else {
+             tasks = JSON.parse(localStorage.getItem('tasks'));
+           }
+         
+           tasks.forEach(function(task){
+             // Create li element
+             const li = document.createElement('li');
+             // add class
+             li.className ='collection-item';
+             // create text node and append to li
+             li.appendChild(document.createTextNode(taskInput.value));
+             // create new link element
+             const link = document.createElement('a');
+             // add class
+             link.className = 'delete-item secondary-content';
+             // add icon html
+              link.innerHTML= '<i class="fa fa-remove"></i>';
+              // append the link to li
+              li.appendChild(link);
+         
+             //append li to ul
+             taskList.appendChild(li);
+           });
+         }
+         
+         // add task
+         function addTask(e){
+           if(taskInput.value === ''){
+             alert('Add a Task');
+           }
+         
+         // Create li element
+         const li = document.createElement('li');
+         // add class
+         li.className ='collection-item';
+         // create text node and append to li
+         li.appendChild(document.createTextNode(taskInput.value));
+         // create new link element
+         const link = document.createElement('a');
+         // add class
+         link.className = 'delete-item secondary-content';
+         // add icon html
+         link.innerHTML= '<i class="fa fa-remove"></i>';
+         // append the link to li
+         li.appendChild(link);
+         
+         //append li to ul
+         taskList.appendChild(li);
+         
+         // store in LS
+         storeTaskInLocalStorage(taskInput.value);
+         
+         //clear input
+         taskInput.value = '';
+         
+         e.preventDefault();
+         }
+         
+         // store Task
+         function storeTaskInLocalStorage(task){
+           let tasks;
+           if(localStorage.getItem('tasks') === null){
+             tasks = [];
+           }else {
+             tasks = JSON.parse(localStorage.getItem('tasks'));
+           }
+         
+           tasks.push(task);
+         
+           localStorage.setItem('tasks' , JSON.stringify(tasks));
+         }
+         
+         // remove task
+         function removeTask(e){
+           if(e.target.parentElement.classList.contains('delete-item')) {
+             if(confirm('Are You Sure?')){
+               e.target.parentElement.parentElement.remove();
+         
+               // remove from LS
+               removeTaskFromLocalStorage(e.target.parentElement.parentElement);
+             }
+           }
+          }
+         
+          // remove from LS
+          function removeTaskFromLocalStorage(taskItem) {
+           let tasks;
+           if(localStorage.getItem('tasks') === null){
+             tasks = [];
+           }else {
+             tasks = JSON.parse(localStorage.getItem('tasks'));
+           }
+         
+           tasks.forEach(function(task, index){
+             if(taskItem.textContent === task){
+               task.splice(index, 1);
+           }
+          });
+         
+          localStorage.setItem('tasks' , JSON.stringify(tasks));
+         }
+         
+          //clear tasks
+          function clearTasks() {
+            //taskList.innerHTML = '';
+         
+            // faster
+            while(taskList.firstChild){
+              taskList.removeChild(taskList.firstChild);
+            }
+         
+            // https://jspref.com/innerhtml-vs-removechild
+         
+            // clear from LS
+             clearTasksFromLocalStorage();
+         }
+         
+         // clear Tasks from LS
+         function clearTasksFromLocalStorage() {
+           localStorage.clear();
+         }
+         
+          // filter tasks
+          function filterTasks(e){
+            const text = e.target.value.toLowerCase();
+         
+            document.querySelectorAll('.collection-item').forEach(function(task){
+              const item = task.firstChild.textContent;
+              if(item.toLowerCase().indexOf(text) != -1){
+                 task.style.display = 'block';
+              }else {
+                 task.style.display = 'none';
+              }
+            });
+          }</script>
+   </body>
+</html>   

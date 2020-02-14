@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Event</title>
+      <link rel="stylesheet" href="{% static 'all.css' %}">
+      <link rel="stylesheet" href="{% static 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+      <link href="{% static '//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+      <script src="{% static '//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js' %}"></script>    
+      <script src="{% static '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js' %}"></script>
+<!------ Include the above in your HEAD tag ---------->
+      <script src="{% static 'https://code.jquery.com/jquery-3.3.1.js' %}"></script>
+   </head>
+   <body>
+      <div class="wrapper">
+         <header>
+            <nav>
+               <div class="menu-icon">
+                  <i class="fa fa-bars fa-2x"></i>
+               </div>
+               <div class="logo"> 
+                  <p style = "font-family:georgia,garamond,serif;font-size:50px;font-style:bold;">
+                     Events
+                  </p>
+                  
+               </div>
+               <div class="menu">
+                  <ul>
+                     <div style = "position:relative; left:30px; top:50px;">
+                     <li><a href="{% url 'home1' %}">Home</a></li>
+                     <li><a href="{% url 'comp' %}">Complain</a></li>
+                     <li><a href="{% url 'lndf' %}">Lost and Found</a></li>
+                     <li><a href="{% url 'cafe' %}">Cafeteria</a></li>  
+                     </div>
+                  </ul>
+               </div>
+            </nav>
+         </header>
+         <div class="content">
+            <p> 
+               <div class="content container">
+                  <div class="row">
+                      <div class="col-md-8">
+               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            <
+            </p>
+            <p>
+               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+         </div>
+      </div>
+      <!--<script src="./all.js" ></script> -->
+   </body>
+</html>

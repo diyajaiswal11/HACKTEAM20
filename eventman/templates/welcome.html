@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Welcome</title>
+      <link rel="stylesheet" href="{% static 'all.css' %}">
+      <link rel="stylesheet" href="{% static 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+      <link href="{% static '//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+      <script src="{% static '//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js' %}"></script>    
+      <script src="{% static '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js' %}"></script>
+<!------ Include the above in your HEAD tag ---------->
+      <script src="{% static 'https://code.jquery.com/jquery-3.3.1.js' %}"></script>
+      <style>
+         table,th,td
+         {
+            border-bottom: 1px solid #f12711;
+            border-collapse: collapse;
+            width: 100%;
+         }
+         th,td{
+            padding: 15px;
+         }
+         tr:hover{background-color : #f5af19;
+         }
+         </style>
+   </head>
+   <body>
+      <div class="wrapper">
+         <header>
+            <nav>
+               <div class="menu-icon">
+                  <i class="fa fa-bars fa-2x"></i>
+               </div>
+               <div class="logo">
+                  <p style = "font-family:georgia,garamond,serif;font-size:50px;font-style:bold;">
+                     Welcome Student!
+                  </p>
+               </div>
+               <div class="menu">
+                  <ul>
+                     <div style = "position:relative; left:30px; top:50px;">
+                     <li><a href="{% url 'lndf' %}">Lost And Found</a></li>
+                     <li><a href="{% url 'comp' %}">Complain</a></li>
+                     <li><a href="{% url 'event' %}">Events</a></li>
+                     <li><a href="{% url 'cafe' %}">Cafeteria</a></li> 
+                     </div>
+                  </ul>
+               </div>
+            </nav>
+         </header>
+         <div class="content" style="position: relative;">
+            <div style="width: 30%;  text-align: center;"><img src="{% static 'images/avtar.jpg' %}" alt="Diya" style="border-radius: 50%; height:300px;"></div>
+            <div style="width: 50%; height: 100%; position: absolute; top: 5px; right: 40px;">
+               <table>
+                  <tr>
+                    <td>Name</td>
+                    <td>Diya Jaiswal</td>
+                  </tr>
+                  <tr>
+                    <td>UserID</td>
+                    <td>18CSE011</td>
+                  </tr>
+                  <tr>
+                    <td>E-mail</td>
+                    <td>diya1301@gmail.com</td>
+                  </tr>
+                  <tr>
+                     <td>Branch</td>
+                     <td>CSE</td>
+                   </tr>
+                   <tr>
+                     <td>Year</td>
+                     <td>2nd</td>
+                   </tr>
+                </table>
+            </div>
+         </div>
+      </div>
+      
+   </body>
+</html>
