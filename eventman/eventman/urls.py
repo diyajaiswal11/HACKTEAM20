@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from student.views import home,home1,register,comp,lndf,event,cafe
+from student.views import home,home1,register,comp,lndf,library,cafe
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +26,6 @@ urlpatterns = [
     path('home/',home1,name='home1'),
     path('comp/',comp,name='comp'),
     path('lndf/',lndf,name='lndf'),
-    path('event/',event,name='event'),
+    path('library/',library,name='Library'),
     path('cafe/',cafe,name='cafe'),
 ]

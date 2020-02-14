@@ -33,7 +33,7 @@ def comp(request):
 def lndf(request):
     return render(request,'lndf.html')
 
-def event(request):
+def library(request):
     return render(request,'event.html')
 
 def cafe(request):
