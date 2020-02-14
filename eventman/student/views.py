@@ -31,10 +31,10 @@ def comp(request):
     return render(request,'comp.html')
 
 def lndf(request):
-    return render(request,'comp.html')
+    return render(request,'lndf.html')
 
 def event(request):
-    return render(request,'comp.html')
+    return render(request,'event.html')
 
 def cafe(request):
     return render(request,'cafe.html')
